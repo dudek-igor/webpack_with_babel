@@ -1,9 +1,13 @@
 const path = require('path');
 
+// Plugins
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: path.resolve(__dirname, '../', 'src', 'index.js'),
   output: {
-    filename: 'js/[name]-[chunkhash].bundle.js',
+    filename: '[name]-[chunkhash].bundle.js',
     path: path.resolve(__dirname, '../', 'dist'),
   },
   module: {
@@ -21,5 +25,17 @@ module.exports = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'New App',
+      template: path.resolve(
+        __dirname,
+        '../',
+        'src',
+        'templates',
+        'index.html'
+      ),
+    }),
+  ],
 };
