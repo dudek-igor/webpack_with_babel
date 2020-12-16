@@ -56,8 +56,10 @@ module.exports = {
   },
   plugins: [
     new ESLintPlugin({
-      context: path.resolve(__dirname, '../', 'src'),
-      files: 'src/**/*.js',
+      // context: path.resolve(__dirname, '../', 'src'),
+      // files: '*.js',
+      // emitError: true,
+      // emitWarning: true,
     }),
     new MiniCssExtractPlugin(),
     new CleanWebpackPlugin(),
